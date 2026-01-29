@@ -16,6 +16,7 @@ Depois, você deverá resolver os desafios propostos abaixo:
 """
 
 import turtle
+
 from random import random
 
 from freegames import line
@@ -32,6 +33,7 @@ def desenhar():
                 line(x, y, x + 40, y + 40)
             else:
                 # TODO desenhar uma linha que vai do ponto (x, y + 40) ao ponto (x + 40, y)
+                line(x, y + 40, x + 40, y)
                 pass
 
     turtle.update()
@@ -54,9 +56,9 @@ turtle.hideturtle()
 turtle.tracer(False)
 
 # TODO chamar função que desenha o labirinto
-
+desenhar()
 
 # TODO Associar função toque ao clique do mouse
-
+toque()
 
 turtle.mainloop()
