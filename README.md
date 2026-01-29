@@ -1,1 +1,1 @@
-# maze-trabalho-de-informtica
+# maze-trabalho-de-informatica
