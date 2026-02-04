@@ -17,10 +17,24 @@ Depois, você deverá resolver os desafios propostos abaixo:
 
 import turtle
 
+import random
+
+import time
+
 from random import random
 
 from freegames import line
 
+screen = turtle.Screen()
+
+pontos = 0
+
+score_display = turtle.Turtle()
+score_display.speed(0)
+score_display.color("black")
+score_display.penup()
+score_display.hideturtle()
+score_display.goto(0, 260)
 
 def desenhar():
     """Desenha o labirinto."""
@@ -38,6 +52,12 @@ def desenhar():
 
     turtle.update()
 
+def aumentar_pontuacao():
+    global pontos
+    pontos += 1
+    atualizar_placar()
+    print(f"Pontuação atual: {pontos}")
+
 def toque(x, y):
     """Desenha o caminho do jogador ao clicar."""
     if abs(x) > 198 or abs(y) > 198:
@@ -50,15 +70,23 @@ def toque(x, y):
     turtle.goto(x, y)
     turtle.dot(4)
 
+    aumentar_pontuacao()
+
+def atualizar_placar():
+    score_display.clear()
+    score_display.write(f"Pontuação: {pontos}", align="center", font=("Arial", 20, "normal"))
+
+
 
 turtle.setup(420, 420, 370, 0)
 turtle.hideturtle()
 turtle.tracer(False)
-
+    
 # TODO chamar função que desenha o labirinto
 desenhar()
 
 # TODO Associar função toque ao clique do mouse
-toque()
+screen.onscreenclick(toque, btn=1)
+atualizar_placar()
 
 turtle.mainloop()
